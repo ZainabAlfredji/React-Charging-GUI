@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
+
+body{
+  padding: 170px 100px 100px 500px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 100px);
+  grid-template-rows: repeat(10, 100px);
+  gap: 0;
+  border: 1 px solid black;
+  background-image: url('./Street.png'); /* Path to your street pattern image */
+  background-size: 1000px 1000px; /* The total size of the grid */
+  background-repeat: no-repeat;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.row {
+  display: contents;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.cell {
+  position: relative;
+  width: 100px; /* or any other fixed size */
+  height: 100px; /* or any other fixed size */
+  background-color: transparent; /* a light grey to make the cells visible */
+  border: 1px solid grey; /* a slight border to distinguish the cells */
+  z-index: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.truck {
+  position: absolute; /* or relative depending on your layout */
+  width: 50px; /* should match cell size */
+  height: 50px; /* should match cell size */
+  background-color: blue; /* color of the truck */
+  border: 1px solid black; /* border to distinguish the truck */
+  z-index: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.communication-zone {
+  background-color: whitesmoke; /* Light blue for communication zones */
+  z-index: 1;
+  border: 2px solid grey;
+}
+
+.charging-zone {
+  position: absolute;
+  bottom: 3px; /* padding from the bottom of the cell */
+  right: 3px; /* padding from the right of the cell */
+  width: 70px;
+  height: 40px;
+  background-color: yellow;
+  z-index: 2;
+  border: 1.5px solid grey;
+}
+
+.truck {
+  position: absolute;
+  width: 30px; /* smaller than the cell */
+  height: 20px; /* the height is less than the width to resemble the truck's cargo area */
+  background-color: blue; /* color of the truck's cargo area */
+  border: 1px solid black;
+  z-index: 1;
+  /* Center the truck in the cell */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+}
+
+.truck::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: -10px; /* position the cabin to the left of the cargo area */
+  width: 15px;
+  height: 15px;
+  background-color: #ccc; /* color of the truck's cabin */
+  border: 1px solid black;
+  border-radius: 3px; /* slightly rounded edges for the cabin */
+}
+
+.truck::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 2px; /* position the wheels under the cargo area */
+  width: 25px; /* width of the axle */
+  height: 5px; /* height of the axle */
+  background-color: #333; /* color of the axle */
+  border-radius: 2px; /* slightly rounded edges for the axle */
+}
+
+.truck::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 1px; /* position the wheels under the cargo area */
+  width: 8px; /* width of the wheel */
+  height: 8px; /* height of the wheel */
+  background-color: #333; /* color of the wheels */
+  border-radius: 50%; /* make the wheels round */
+  box-shadow: 20px 0 0 #333; /* add a second wheel with a shadow */
 }
