@@ -29,12 +29,37 @@ body{
 }
 
 .truck {
-  position: absolute; /* or relative depending on your layout */
+  position: relative; /* or relative depending on your layout */
   width: 50px; /* should match cell size */
   height: 50px; /* should match cell size */
   background-color: blue; /* color of the truck */
   border: 1px solid black; /* border to distinguish the truck */
   z-index: 1;
+  transform: translate(-50%, -50%);
+}
+
+.chat-bubble {
+  position: absolute;
+  top: -10px; /* Adjust as necessary */
+  left: 100%; /* Positions to the right of the truck */
+  width: 120px; /* Adjust width as necessary */
+  padding: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns text to the left */
+}
+
+.chat-bubble ul {
+  list-style-type: none; /* Removes default bullet points */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+}
+
+.chat-bubble li {
+  margin-bottom: 5px; /* Space between items */
 }
 
 .communication-zone {
